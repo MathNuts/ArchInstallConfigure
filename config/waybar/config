@@ -1,0 +1,97 @@
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"sway/workspaces"
+	],
+	"modules-center": [
+		"clock#1",
+		"clock#2"
+	],
+	"modules-right": [
+		"network",
+		"pulseaudio",
+		"memory",
+		"cpu",
+		"temperature",
+		"battery",
+		"tray"
+	],
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+	},
+
+	"clock#1": {
+		"format": "{:%a %d. %b}",
+		"tooltip": false
+	},
+	"clock#2": {
+		"interval": 1,
+		"format": "{:%I:%M:%S %p}",
+		"tooltip": false
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume:2}",
+		"format-muted": "",
+		"format-bluetooth": " {volume:2}",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click-right": "pavucontrol"
+	},
+	"memory": {
+		"interval": 5,
+		"format": " {used:0.1f}"
+	},
+	"cpu": {
+		"interval": 1,
+		"format": " {usage:2}"
+	},
+	"temperature": {
+		"interval": 1,
+		"hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+		"input-filename": "temp1_input",
+		"format": " {temperatureC}"
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"bat": "BAT0",
+		"format": "{icon} {capacity}",
+		"format-charging": " {capacity}",
+		"tooltip-format": "{timeTo}",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"tray": {
+		"icon-size": 20,
+		"spacing": 8
+	},
+	"network": {
+		"format": "",
+		"format-wifi": " {signalStrength}",
+		"format-disconnected": " -",
+		"tooltip-format": "{ifname} via {gwaddr}",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
+		"tooltip-format-ethernet": "{ifname}",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50
+	}
+}

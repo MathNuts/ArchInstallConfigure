@@ -1,0 +1,17 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+alias temps='watch -n .5 ~/scripts/temps.sh'
+alias clock='~/scripts/clock.sh'
+
+HISTCONTROL=ignoreboth
+
+# Force default terminal on ssh sessions
+alias ssh='TERM=linux ssh'

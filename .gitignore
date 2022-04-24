@@ -1,0 +1,5 @@
+# Background images
+images/
+
+# Output configuration
+config/sway/outputs.conf

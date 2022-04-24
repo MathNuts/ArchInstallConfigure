@@ -1,0 +1,9 @@
+# Mako notification server config
+
+font=pango:Noto Sans Mono 12
+
+background-color=#292b2e
+border-color=#222629
+progress-color=over #458a85
+
+default-timeout=5000

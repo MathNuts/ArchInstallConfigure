@@ -19,7 +19,7 @@ while getopts ":carlh" o; do
             laptop=1
             ;;
         h)
-            echo "./install.sh [options]"
+            echo "./configure.sh [options]"
             echo "-c        Load only configs       (no package downloads)"
             echo "-a        Load addons             (requires open sway)"
             echo "-r        Reload all configs      (requires open sway)"

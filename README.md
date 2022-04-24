@@ -33,7 +33,7 @@ After installing Windows (if dual-booting), we can run the installer.
 I recommend modifying "configure.sh" to your preferences before running. The configurator has a range of parameters.
 
 ```console
-./install.sh [options]
+./configure.sh [options]
 -c        Load only configs       (no package downloads)
 -a        Load addons             (requires open sway)
 -r        Reload all configs      (requires open sway)

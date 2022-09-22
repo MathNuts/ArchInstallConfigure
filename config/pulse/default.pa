@@ -1,7 +1,0 @@
-.include /etc/pulse/default.pa
-
-.nofail
-unload-module module-udev-detect
-load-module module-udev-detect tsched=0
-unload-module module-suspend-on-idle
-.fail

@@ -43,7 +43,6 @@ official=(
     otf-font-awesome
 
     # Sway
-    sway
     xorg-xwayland
     waybar
     wl-clipboard
@@ -51,15 +50,19 @@ official=(
     mako
 
     # Sound
-    pulseaudio
     alsa-utils
     pavucontrol
+    pipewire
+    wireplumber
+    helvum
+    pipewire-alsa
+    pipewire-pulse
+    pipewire-jack
+    easyeffects
 
     # Screen recording
     grim
     slurp
-    pipewire
-    wireplumber
     xdg-desktop-portal
     xdg-desktop-portal-wlr
 
@@ -92,7 +95,7 @@ official=(
 )
 
 # Intel GPU
-intel_gpu=$(lspci -vnn | grep VGA | grep -i intel)
+intel_gpu=$(lspci -nn | grep VGA | grep -i intel)
 if [[ $intel_gpu ]] ; then
     official+=(
         mesa
@@ -108,13 +111,17 @@ fi
 # Laptop
 if [[ $laptop == 1 ]] ; then
     official+=(
-        pulseaudio-bluetooth
         thermald
     )
 fi
 
 # AUR packages
 aur=(
+    # Sway
+    wlroots-git
+    swaybg-git
+    sway-git
+
     # Apps
     visual-studio-code-bin
     spotify
@@ -125,14 +132,6 @@ aur=(
     # Sway stuff
     foot
     sway-launcher-desktop
-
-    # Pulse processing
-    pulseeffects-legacy
-    lsp-plugins
-    calf
-
-    # MS Fonts
-    ttf-ms-fonts
 )
 
 if [[ ! $configure_only ]] ; then
@@ -158,8 +157,8 @@ if [[ ! $configure_only ]] ; then
         sudo systemctl start thermald.service
     fi
 
-    # Start pulse after install
-    pulseaudio --start
+    # Start pipewire after install
+    systemctl --user start pipewire-pulse.service
 
 else
     echo "Only config updates"
@@ -172,7 +171,6 @@ mkdir -p ~/.config
 mkdir -p ~/.config/sway
 mkdir -p ~/.config/waybar
 mkdir -p ~/.config/gtk-3.0
-mkdir -p ~/.config/pulse
 mkdir -p ~/.config/environment.d
 mkdir -p ~/.mozilla
 mkdir -p ~/.mozilla/firefox
@@ -188,8 +186,6 @@ cp ${dirname}/config/waybar/* ~/.config/waybar/
 cp ${dirname}/config/gtk/gtk2 ~/.gtkrc-2.0
 cp ${dirname}/config/gtk/gtk3 ~/.config/gtk-3.0/settings.ini
 cp ${dirname}/config/bash/bashrc ~/.bashrc
-cp ${dirname}/config/pulse/default.pa ~/.config/pulse/
-cp ${dirname}/config/pulse/daemon.conf ~/.config/pulse/
 cp ${dirname}/config/environment/systemd ~/.config/environment.d/env.conf
 cp ${dirname}/config/fcitx5/profile ~/.config/fcitx5/
 cp ${dirname}/config/fcitx5/classicui.conf ~/.config/fcitx5/conf/
@@ -261,9 +257,7 @@ if [[ $WAYLAND_DISPLAY ]] ; then
     # Essential
     if [[ $reload_all ]] ; then
         swaymsg reload
-        pulseaudio -k
-        sleep 1
-        pulseaudio --start
+        systemctl --user restart pipewire-pulse.service
     fi
 fi
 

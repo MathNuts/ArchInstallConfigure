@@ -190,12 +190,12 @@ include /etc/sway/config.d/*
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 ### Execute programs on sway init
-exec_always killall pulseeffects
+exec_always killall easyeffects
 exec_always killall fcitx5
 exec_always killall waybar
 exec_always killall solaar
 
-exec_always pulseeffects pulseeffects --gapplication-service
+exec_always easyeffects --gapplication-service
 exec_always fcitx5
 exec_always waybar
 exec_always solaar -b symbolic -w hide

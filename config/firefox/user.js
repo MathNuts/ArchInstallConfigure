@@ -4,10 +4,6 @@
 // Hardware acceleration
 user_pref("loaded-custom-settings", true);
 user_pref("media.ffmpeg.vaapi.enabled", true);
-/*user_pref("media.rdd-ffmpeg.enabled", true);
-user_pref("media.ffvpx.enabled", false);
-user_pref("media.navigator.mediadatadecoder_vpx_enabled", true);
-user_pref("media.rdd-vpx.enabled", false);*/
 
 // PiP disable
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);

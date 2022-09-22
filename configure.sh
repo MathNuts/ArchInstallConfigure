@@ -59,6 +59,7 @@ official=(
     pipewire-pulse
     pipewire-jack
     easyeffects
+    noise-suppression-for-voice
 
     # Screen recording
     grim
@@ -179,6 +180,7 @@ mkdir -p ~/.config/fcitx5/conf
 mkdir -p ~/.config/mako
 mkdir -p ~/.config/Code/User/
 mkdir -p ~/.config/spotify
+mkdir -p ~/.config/pipewire/pipewire.conf.d
 
 # Copy files
 cp ${dirname}/config/sway/* ~/.config/sway/
@@ -192,6 +194,7 @@ cp ${dirname}/config/fcitx5/classicui.conf ~/.config/fcitx5/conf/
 cp ${dirname}/config/mako/config ~/.config/mako/
 cp ${dirname}/config/vscode/settings.json ~/.config/Code/User/
 cp ${dirname}/config/spotify/prefs ~/.config/spotify/
+cp ${dirname}/config/pipewire/pipewire.conf.d/* ~/.config/pipewire/pipewire.conf.d/
 
 # Sudo
 sudo mkdir -p /etc/NetworkManager/conf.d/

@@ -3,6 +3,16 @@
 	font-family: 'Noto Sans Mono', 'Font Awesome 5 Free Solid';
 }
 
+label:disabled,
+button:disabled {
+  color: inherit;
+  background-image: none;
+}
+
+button {
+	border-color: transparent;
+}
+
 window#waybar {
 	background: #292b2e;
 	color: #ffffff;

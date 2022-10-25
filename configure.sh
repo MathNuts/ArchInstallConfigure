@@ -44,7 +44,6 @@ official=(
 
     # Sway
     xorg-xwayland
-    waybar
     wl-clipboard
     libnotify
     mako
@@ -122,6 +121,7 @@ aur=(
     wlroots-git
     swaybg-git
     sway-git
+    waybar-git
 
     # Apps
     visual-studio-code-bin

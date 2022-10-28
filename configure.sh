@@ -181,6 +181,7 @@ mkdir -p ~/.config/mako
 mkdir -p ~/.config/Code/User/
 mkdir -p ~/.config/spotify
 mkdir -p ~/.config/pipewire/pipewire.conf.d
+mkdir -p ~/.config/wireplumber/main.lua.d
 
 # Copy files
 cp ${dirname}/config/sway/* ~/.config/sway/
@@ -195,6 +196,7 @@ cp ${dirname}/config/mako/config ~/.config/mako/
 cp ${dirname}/config/vscode/settings.json ~/.config/Code/User/
 cp ${dirname}/config/spotify/prefs ~/.config/spotify/
 cp ${dirname}/config/pipewire/pipewire.conf.d/* ~/.config/pipewire/pipewire.conf.d/
+cp ${dirname}/config/pipewire/wireplumber/* ~/.config/wireplumber/main.lua.d/
 
 # Sudo
 sudo mkdir -p /etc/NetworkManager/conf.d/

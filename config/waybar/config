@@ -35,7 +35,7 @@
 	},
 
 	"pulseaudio": {
-		"ignored-sinks": ["EasyEffects Sink"],
+		"ignored-sinks": ["EasyEffects Sink", "Easy Effects Sink"],
 		"format": "{icon} {volume:2}",
 		"format-muted": "",
 		"format-bluetooth": " {volume:2}",

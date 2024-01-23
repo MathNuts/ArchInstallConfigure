@@ -42,7 +42,7 @@ echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 # Allow sudo
 log "Setup sudo"
-sed -i -e 's/^# %wheel ALL=(ALL) NOPASSWD/%wheel ALL=(ALL) NOPASSWD/' /etc/sudoers
+sed -i -e 's/^# %wheel ALL=(ALL:ALL) NOPASSWD/%wheel ALL=(ALL:ALL) NOPASSWD/' /etc/sudoers
 
 # Setup mkinitcpio
 log "Generate mkinitcpio"
@@ -51,7 +51,8 @@ mkinitcpio -p linux-zen
 
 # Setup GRUB
 log "Installing GRUB"
-sed -i -e "s|loglevel=3 quiet|loglevel=3 cryptdevice=/dev/$root_partition:volgroup0:allow-discards quiet|g" /etc/default/grub
+cryptuuid=$(blkid /dev/$root_partition -s UUID -o value)
+sed -i -e "s|loglevel=3 quiet|loglevel=3 cryptdevice=UUID=$cryptuuid:volgroup0:allow-discards quiet|g" /etc/default/grub
 sed -i -e 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
 grub-install --target=x86_64-efi --bootloader-id=GRUB
 if [[ $dual_boot == "Different" ]] ; then
@@ -76,7 +77,7 @@ fi
 
 # Set timezone and time
 log "Setting time"
-ln -sf /usr/share/zoneinfo/Europe/Oslo /etc/localtime
+ln -sf /usr/share/zoneinfo/$zoneinfo /etc/localtime
 ntpd -qg
 hwclock --systohc
 

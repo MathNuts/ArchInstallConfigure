@@ -16,7 +16,7 @@ user_pref("services.sync.engine.prefs.modified", false);
 user_pref("services.sync.engine.tabs", false);
 
 // Do not save logins
-user_pref("signon.rememberSignons",	false);
+user_pref("signon.rememberSignons", false);
 
 // Devtools
 user_pref("devtools.toolbox.host", "right");

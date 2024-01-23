@@ -43,6 +43,9 @@ official=(
     otf-font-awesome
 
     # Sway
+    sway
+    swaybg
+    waybar
     xorg-xwayland
     wl-clipboard
     libnotify
@@ -57,8 +60,6 @@ official=(
     pipewire-alsa
     pipewire-pulse
     pipewire-jack
-    easyeffects
-    noise-suppression-for-voice
 
     # Screen recording
     grim
@@ -117,18 +118,9 @@ fi
 
 # AUR packages
 aur=(
-    # Sway
-    wlroots-git
-    swaybg-git
-    sway-git
-    waybar-git
-
     # Apps
     visual-studio-code-bin
     spotify
-
-    # Tools
-    yt-dlp
 
     # Sway stuff
     foot
@@ -180,7 +172,6 @@ mkdir -p ~/.config/fcitx5/conf
 mkdir -p ~/.config/mako
 mkdir -p ~/.config/Code/User/
 mkdir -p ~/.config/spotify
-mkdir -p ~/.config/pipewire/pipewire.conf.d
 mkdir -p ~/.config/wireplumber/main.lua.d
 
 # Copy files
@@ -195,7 +186,6 @@ cp ${dirname}/config/fcitx5/classicui.conf ~/.config/fcitx5/conf/
 cp ${dirname}/config/mako/config ~/.config/mako/
 cp ${dirname}/config/vscode/settings.json ~/.config/Code/User/
 cp ${dirname}/config/spotify/prefs ~/.config/spotify/
-cp ${dirname}/config/pipewire/pipewire.conf.d/* ~/.config/pipewire/pipewire.conf.d/
 cp ${dirname}/config/pipewire/wireplumber/* ~/.config/wireplumber/main.lua.d/
 
 # Sudo
@@ -222,11 +212,10 @@ if [[ $addons_open ]] && [[ $WAYLAND_DISPLAY ]] ; then
     }
 
     addon_ublock=$(addon 607454)
-    addon_h264=$(addon 1482534)
     addon_tamper=$(addon 683490)
     addon_nordvpn=$(addon 872622)
 
-    firefox $addon_ublock $addon_h264 $addon_tamper $addon_nordvpn > /dev/null 2>&1 &
+    firefox $addon_ublock $addon_tamper $addon_nordvpn > /dev/null 2>&1 &
 fi
 
 # Set other settings

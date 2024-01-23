@@ -5,6 +5,7 @@ kb_layout="no-latin1"
 ping_test="google.com"
 mirror_countries="country=NO&country=NL"
 mirrorlist="/etc/pacman.d/mirrorlist"
+zoneinfo="Europe/Oslo"
 
 # Colors
 #   Grey
